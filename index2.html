@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dizzy Footwear Catalogue</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #ffe88b;
+            color: #070707;
+        }
+
+        /* --- Logo --- */
+        .logo {
+            height: 115px;
+            width: auto;
+            object-fit: contain;
+
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                height: 65px;
+            }
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 30px;
+        }
+
+        nav h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #070707;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover {
+            color: #e63946;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header p {
+            color: #252525;
+            font-size: 1.2rem;
+        }
+
+        /* --- Catalogue Grid --- */
+        .catalogue {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        /* --- Product Cards --- */
+        .product {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .product:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .product:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            margin: 8px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .product p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+            color: #666;
+            min-height: 40px;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #111;
+            margin: 12px 0;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #e63946;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+        <a href="#">
+
+            <img src="D.jpg" alt="Dizzy Footwear Logo" class="logo">
+        </a>
+        </div>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Catalogue</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Cart</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <p>Minimal. Bold. Futuristic.</p>
+    </header>
+
+    <!-- Catalogue -->
+    <div class="catalogue">
+        <!-- Product 1 -->
+        <div class="product">
+            <img src="profile.jpg" alt="Dizzy AirFlex">
+            <h3>Dizzy AirFlex</h3>
+            <div class="price">R999</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <img src="profile2.jpg" alt="Dizzy Nova">
+            <h3>Dizzy Nova</h3>
+            <div class="price">R1,299</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product">
+            <img src="shoe3.jpg" alt="Dizzy Orbit">
+            <h3>Dizzy Orbit</h3>
+            <div class="price">R1,199</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product">
+            <img src="shoe4.jpg" alt="Dizzy Pulse">
+            <h3>Dizzy Pulse</h3>
+            <p>High-performance trainers designed for gym & street.</p>
+            <div class="price">R1,499</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product">
+            <img src="shoe5.jpg" alt="Dizzy Core">
+            <h3>Dizzy Core</h3>
+            <p>Classic low-cut sneaker with timeless style.</p>
+            <div class="price">R899</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product">
+            <img src="shoe6.jpg" alt="Dizzy Zenith">
+            <h3>Dizzy Zenith</h3>
+            <p>Premium leather sneaker with luxury finish.</p>
+            <div class="price">R1,799</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product">
+            <img src="shoe7.jpg" alt="Dizzy Shift">
+            <h3>Dizzy Shift</h3>
+            <p>Cross-training shoe with adaptive grip sole.</p>
+            <div class="price">R1,299</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product">
+            <img src="shoe8.jpg" alt="Dizzy Apex">
+            <h3>Dizzy Apex</h3>
+            <p>High-top sneaker with a bold, modern edge.</p>
+            <div class="price">R1,599</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product">
+            <img src="shoe9.jpg" alt="Dizzy Motion">
+            <h3>Dizzy Motion</h3>
+            <p>Flexible runner inspired by barefoot movement.</p>
+            <div class="price">R1,199</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product">
+            <img src="shoe10.jpg" alt="Dizzy Horizon">
+            <h3>Dizzy Horizon</h3>
+            <p>Outdoor sneaker-boot hybrid for trail & city.</p>
+            <div class="price">R1,899</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product">
+            <img src="shoe11.jpg" alt="Dizzy Streamline">
+            <h3>Dizzy Streamline</h3>
+            <p>Lightweight trainers with a slipstream-inspired design.</p>
+            <div class="price">R1,099</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product">
+            <img src="shoe12.jpg" alt="Dizzy Element">
+            <h3>Dizzy Element</h3>
+            <p>Waterproof sneakers built for all conditions.</p>
+            <div class="price">R1,699</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 13 -->
+        <div class="product">
+            <img src="shoe13.jpg" alt="Dizzy Glide">
+            <h3>Dizzy Glide</h3>
+            <p>Minimal slides with ergonomic comfort.</p>
+            <div class="price">R499</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+
+        <!-- Product 14 -->
+        <div class="product">
+            <img src="shoe14.jpg" alt="Dizzy Phantom">
+            <h3>Dizzy Phantom</h3>
+            <p>Stealth-inspired blacked-out sneaker.</p>
+            <div class="price">R1,599</div>
+            <a href="#" class="btn">Buy Now</a>
+        </div>
+    </div>
+</body>
+
+</html>
