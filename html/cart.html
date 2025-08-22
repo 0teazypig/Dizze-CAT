@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart | Dizze Footwear</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo-container">
+      <a href="../index.html">
+        <img src="../D.jpg" alt="Dizze Footwear Logo">
+      </a>
+    </div>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="./catalogue.html">Catalogue</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./cart.html" class="active">Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>Your Shopping Cart</h1>
+    <p>Review your items before checkout</p>
+  </header>
+
+  <!-- Main Cart Section -->
+  <main class="cart-section">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody id="cartItems">
+        <!-- Example static row (will later be filled dynamically with JS) -->
+        <tr>
+          <td><img src="../profile.jpg" alt="Dizze AirFlex" class="cart-img"></td>
+          <td>Dizze AirFlex</td>
+          <td>R999</td>
+          <td><input type="number" value="1" min="1"></td>
+          <td>R999</td>
+          <td><button class="remove-btn">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Cart Summary -->
+    <section class="cart-summary">
+      <h2>Order Summary</h2>
+      <p><strong>Subtotal:</strong> <span id="subtotal">R999</span></p>
+      <p><strong>Shipping:</strong> R100</p>
+      <p><strong>Total:</strong> <span id="total">R1,099</span></p>
+      <button class="btn checkout-btn">Proceed to Checkout</button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dizze Footwear. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for cart logic -->
+  <script src="../cart.js"></script>
+</body>
+
+</html>
