@@ -2,156 +2,384 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    
-    <title>Dizze Footwear Catalogue</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dizze Footwear | Home</title>
+  <style>
+    /* --- Reset --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        
-    </style>
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #070707;
+      overflow-x: hidden;
+    }
+
+    /* --- Navbar --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 40px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo-container img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      font-size: 1rem;
+      color: #070707;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav ul li a:hover {
+      color: #e63946;
+    }
+
+    /* --- Hero / Banner --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("banner.jpg") center/cover no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, #ff4d4d, #1a1aff, #ff0080);
+      background-size: 600% 600%;
+      animation: gradientShift 12s ease infinite;
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero-text h1 {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .hero-text .btn {
+      animation: fadeIn 2s ease forwards;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* --- Buttons --- */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #ff4d4d, #1a1aff);
+      color: #fff;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 15px rgba(255, 77, 77, 0.6),
+        0 0 25px rgba(26, 26, 255, 0.6);
+      transform: scale(1.08);
+    }
+
+    /* --- Section Wave Transition --- */
+    .wave {
+      display: block;
+      margin-top: -1px;
+    }
+
+    /* --- Featured --- */
+    .featured {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #f9f9f9, #e6f0ff);
+    }
+
+    .featured h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .featured-product {
+      background: #fff;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .featured-product:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .featured-product:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+
+    .featured-product:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+
+    .featured-product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .featured-product:hover img {
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Values --- */
+    .values {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #fff7f7, #ffe6e6);
+    }
+
+    .values h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .value {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .value:hover {
+      transform: rotateX(5deg) rotateY(-5deg) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* --- CTA --- */
+    .cta {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(90deg, #ff4d4d, #1a1aff);
+      color: white;
+    }
+
+    .cta h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    .cta-btn {
+      background: white;
+      color: #111;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="D.jpg" alt="Dizze Footwear Logo">
-            </a>
-        </div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="./html/catalogue.html">Catalogue</a></li>
-            <li><a href="./html/about.html">About</a></li>
-            <li><a href="./html/cart.html">Cart</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <p>Minimal. Bold. Futuristic.</p>
-    </header>
-
-    <!-- Catalogue -->
-    <div class="catalogue">
-        <!-- Example product card -->
-        <div class="product" data-name="Dizze AirFlex" data-price="R999" data-img="profile.jpg" data-desc="Premium trainers for gym & street.">
-            <img src="profile.jpg" alt="Dizze AirFlex">
-            <h3>Dizze AirFlex</h3>
-            <div class="price">R999</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <!-- Repeat similar structure for all 14 products -->
-        <div class="product" data-name="Dizze Nova" data-price="R1,299" data-img="profile2.jpg" data-desc="Modern lifestyle sneakers.">
-            <img src="profile2.jpg" alt="Dizze Nova">
-            <h3>Dizze Nova</h3>
-            <div class="price">R1,299</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Orbit" data-price="R1,199" data-img="shoe3.jpg" data-desc="Flexible running shoes.">
-            <img src="shoe3.jpg" alt="Dizze Orbit">
-            <h3>Dizze Orbit</h3>
-            <div class="price">R1,199</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Pulse" data-price="R1,499" data-img="shoe4.jpg" data-desc="High-performance trainers designed for gym & street.">
-            <img src="profile3.jpg" alt="Dizze Pulse">
-            <h3>Dizze Pulse</h3>
-            <div class="price">R1,499</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Core" data-price="R899" data-img="shoe5.jpg" data-desc="Classic low-cut sneaker with timeless style.">
-            <img src="profile4.jpg" alt="Dizze Core">
-            <h3>Dizze Core</h3>
-            <div class="price">R899</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Zenith" data-price="R1,799" data-img="shoe6.jpg" data-desc="Premium leather sneaker with luxury finish.">
-            <img src="profile5.jpg" alt="Dizze Zenith">
-            <h3>Dizze Zenith</h3>
-            <div class="price">R1,799</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Shift" data-price="R1,299" data-img="shoe7.jpg" data-desc="Cross-training shoe with adaptive grip sole.">
-            <img src="profile6.jpg" alt="Dizze Shift">
-            <h3>Dizze Shift</h3>
-            <div class="price">R1,299</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Apex" data-price="R1,599" data-img="shoe8.jpg" data-desc="High-top sneaker with a bold, modern edge.">
-            <img src="profile7.jpg" alt="Dizze Apex">
-            <h3>Dizze Apex</h3>
-            <div class="price">R1,599</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Motion" data-price="R1,199" data-img="shoe9.jpg" data-desc="Flexible runner inspired by barefoot movement.">
-            <img src="profile8.jpg" alt="Dizze Motion">
-            <h3>Dizze Motion</h3>
-            <div class="price">R1,199</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Horizon" data-price="R1,899" data-img="shoe10.jpg" data-desc="Outdoor sneaker-boot hybrid for trail & city.">
-            <img src="profile9.jpg" alt="Dizze Horizon">
-            <h3>Dizze Horizon</h3>
-            <div class="price">R1,899</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Streamline" data-price="R1,099" data-img="shoe11.jpg" data-desc="Lightweight trainers with a slipstream-inspired design.">
-            <img src="shoe11.jpg" alt="Dizze Streamline">
-            <h3>Dizze Streamline</h3>
-            <div class="price">R1,099</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Element" data-price="R1,699" data-img="shoe12.jpg" data-desc="Waterproof sneakers built for all conditions.">
-            <img src="shoe12.jpg" alt="Dizze Element">
-            <h3>Dizze Element</h3>
-            <div class="price">R1,699</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Glide" data-price="R499" data-img="shoe13.jpg" data-desc="Minimal slides with ergonomic comfort.">
-            <img src="shoe13.jpg" alt="Dizze Glide">
-            <h3>Dizze Glide</h3>
-            <div class="price">R499</div>
-            <button class="btn">Buy Now</button>
-        </div>
-
-        <div class="product" data-name="Dizze Phantom" data-price="R1,599" data-img="shoe14.jpg" data-desc="Stealth-inspired blacked-out sneaker.">
-            <img src="shoe14.jpg" alt="Dizze Phantom">
-            <h3>Dizze Phantom</h3>
-            <div class="price">R1,599</div>
-            <button class="btn">Buy Now</button>
-        </div>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="D.jpg" alt="Dizze Footwear Logo">
+      </a>
     </div>
-   
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="./html/catalogue.html">Catalogue</a></li>
+      <li><a href="./html/about.html">About</a></li>
+      <li><a href="./html/cart.html">Cart</a></li>
+    </ul>
+  </nav>
 
-    <!-- Modal -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <img id="modalImg" src="" alt="Product Image">
-            <h3 id="modalName"></h3>
-            <p id="modalDesc"></p>
-            <div id="modalPrice" class="price"></div>
-            <button class="btn">Add to Cart</button>
-        </div>
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Minimal. Bold. Futuristic.</h1>
+      <p>Step into the future of footwear.</p>
+      <a href="./html/catalogue.html" class="btn">Shop Now</a>
     </div>
+  </header>
 
-    <!-- JavaScript -->
-    <script src="./products.js"> </script>
+  <!-- Wave Divider -->
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+    <path fill="#f9f9f9" d="M0,64L1440,0L1440,320L0,320Z"></path>
+  </svg>
+
+  <!-- Featured Products -->
+  <section class="featured">
+    <h2>Featured Styles</h2>
+    <div class="featured-grid">
+      <div class="featured-product">
+        <img src="profile.jpg" alt="Dizze AirFlex sneaker">
+        <h3>Dizze AirFlex</h3>
+        <p class="price">R999</p>
+        <a href="./html/catalogue.html" class="btn">View</a>
+      </div>
+      <div class="featured-product">
+        <img src="profile2.jpg" alt="Dizze Nova sneaker">
+        <h3>Dizze Nova</h3>
+        <p class="price">R1,299</p>
+        <a href="./html/catalogue.html" class="btn">View</a>
+      </div>
+      <div class="featured-product">
+        <img src="profile5.jpg" alt="Dizze Zenith sneaker">
+        <h3>Dizze Zenith</h3>
+        <p class="price">R1,799</p>
+        <a href="./html/catalogue.html" class="btn">View</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values">
+    <h2>Why Choose Dizze?</h2>
+    <div class="values-grid">
+      <div class="value">
+        <h3>✔ Innovative Design</h3>
+        <p>Forward-thinking sneakers that define tomorrow’s style.</p>
+      </div>
+      <div class="value">
+        <h3>✔ Premium Comfort</h3>
+        <p>Engineered for all-day wear, in the gym or the city.</p>
+      </div>
+      <div class="value">
+        <h3>✔ Futuristic Style</h3>
+        <p>Minimal, bold, and crafted to stand out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Ready to Elevate Your Style?</h2>
+    <a href="./html/catalogue.html" class="btn cta-btn">Explore Catalogue</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Dizze Footwear. All Rights Reserved.</p>
+  </footer>
 </body>
 
 </html>

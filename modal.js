@@ -1,3 +1,4 @@
+// modal.js
 const products = document.querySelectorAll('.product');
 const modal = document.getElementById('productModal');
 const closeModal = document.getElementById('closeModal');
@@ -5,52 +6,43 @@ const modalImg = document.getElementById('modalImg');
 const modalName = document.getElementById('modalName');
 const modalDesc = document.getElementById('modalDesc');
 const modalPrice = document.getElementById('modalPrice');
-const modalAddBtn = document.querySelector('#productModal .btn'); // "Add to Cart" button in modal
+const modalAddBtn = document.querySelector('#productModal .btn');
 
-let currentProduct = null; // Track which product is open in modal
+let currentProduct = null;
 
-// Show modal when product button clicked
+// Open modal when product clicked
 products.forEach(product => {
-  const btn = product.querySelector('.btn');
-  btn.addEventListener('click', () => {
+  product.querySelector('.btn').addEventListener('click', () => {
     modal.style.display = 'flex';
     modalImg.src = product.dataset.img;
     modalName.textContent = product.dataset.name;
     modalDesc.textContent = product.dataset.desc;
-    modalPrice.textContent = product.dataset.price;
-    currentProduct = product; // remember which product was clicked
+    modalPrice.textContent = "R" + parseInt(product.dataset.price).toLocaleString();
+    currentProduct = product;
   });
 });
 
 // Close modal
-closeModal.addEventListener('click', () => {
-  modal.style.display = 'none';
-});
-window.addEventListener('click', (e) => {
-  if (e.target == modal) {
-    modal.style.display = 'none';
-  }
+closeModal.addEventListener('click', () => modal.style.display = 'none');
+window.addEventListener('click', e => {
+  if(e.target === modal) modal.style.display = 'none';
 });
 
-// Add to Cart (inside modal)
+// Add to cart
 modalAddBtn.addEventListener('click', () => {
-  if (!currentProduct) return;
+  if(!currentProduct) return;
 
   const name = currentProduct.dataset.name;
-  const price = parseFloat(currentProduct.dataset.price.replace("R", "").replace(",", ""));
+  const price = parseFloat(currentProduct.dataset.price);
   const img = currentProduct.dataset.img;
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
   const existing = cart.find(item => item.name === name);
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ name, price, img, quantity: 1 });
-  }
+
+  if(existing) existing.quantity += 1;
+  else cart.push({ name, price, img, quantity: 1 });
 
   localStorage.setItem("cart", JSON.stringify(cart));
   alert(`${name} added to cart!`);
-
-  modal.style.display = 'none'; // close modal after adding
+  modal.style.display = 'none';
 });

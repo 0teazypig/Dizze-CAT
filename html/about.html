@@ -35,8 +35,8 @@
     <section class="about-intro">
       <h2>Our Story</h2>
       <p>
-        Dizze Footwear was founded with a single vision: to blend performance, comfort, and style into 
-        sneakers that work as hard as you do. From the gym to the streets, our designs are inspired by 
+        Dizze Footwear was founded with a single vision: to blend performance, comfort, and style into
+        sneakers that work as hard as you do. From the gym to the streets, our designs are inspired by
         modern lifestyles, bold creativity, and futuristic innovation.
       </p>
     </section>
@@ -53,7 +53,7 @@
     <section class="about-mission">
       <h2>Our Mission</h2>
       <p>
-        To empower individuals through footwear that adapts to every step of their journey — 
+        To empower individuals through footwear that adapts to every step of their journey —
         whether that’s in sports, fashion, or everyday life.
       </p>
     </section>
@@ -63,6 +63,24 @@
   <footer>
     <p>&copy; 2025 Dizze Footwear. All Rights Reserved.</p>
   </footer>
+
+  <!-- Scroll animation JS -->
+  <script>
+    const sections = document.querySelectorAll(".about-section section");
+
+    function revealSections() {
+      const windowHeight = window.innerHeight;
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < windowHeight - 100) {
+          section.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealSections);
+    window.addEventListener("load", revealSections);
+  </script>
 </body>
 
 </html>
